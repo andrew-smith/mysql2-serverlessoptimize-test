@@ -2,7 +2,7 @@
 
 This repo serves to show an issue with the npm modules serverless-plugin-optimize and mysql2.
 
-It appears due to mysql2 _requiring_ it's internal dependencies dynamicly, serverless-plugin-optimize does not see that it needs the files, and removes them from the compiled bundle.
+It appears due to mysql2 _requiring_ it's internal dependencies dynamically, serverless-plugin-optimize does not see that it needs the files, and removes them from the compiled bundle.
 This was done with:
 - serverless 1.12.1
 - serverless-plugin-optimize 3.0.4-rc.1
@@ -45,13 +45,13 @@ Serverless: Optimize: aws-nodejs-dev-test
     at a (/home/andrew/repos/mysql2-serverlessoptimize-test/_optimize/aws-nodejs-dev-test/test.js:1:150) code: 'MODULE_NOT_FOUND' }
 ```
 
-
+To fix the issue, disable serverless-plugin-optimize in serverless.yml. This will cause every package to be bundled but it will work.
 
 
 
 ## References:
 
-The issue in mysql2 https://github.com/sidorares/node-mysql2/blob/5f0fb8f1f5035e2c0207490aa2f0b838dc82fdc2/lib/packets/index.js
+The issue in mysql2 where it dynamically adds modules:  https://github.com/sidorares/node-mysql2/blob/5f0fb8f1f5035e2c0207490aa2f0b838dc82fdc2/lib/packets/index.js
 
 ```
 'auth_switch_request auth_switch_response auth_switch_request_more_data binlog_dump register_slave ssl_request handshake handshake_response query resultset_header column_definition text_row binary_row prepare_statement close_statement prepared_statement_header execute change_user'
