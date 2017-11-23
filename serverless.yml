@@ -1,0 +1,27 @@
+
+
+service: aws-nodejs # NOTE: update this with your service name
+
+
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+
+
+plugins:
+  - serverless-plugin-optimize
+
+
+custom:
+  optimize:
+    debug: false
+    ignore: ['aws-sdk'] # ignoring aws-sdk as this is packaged into lambda
+    minify: false
+package:
+  individually: true
+
+
+functions:
+  test:
+    handler: test.run

@@ -1,0 +1,17 @@
+{
+  "name": "test-mysql2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Andrew Smith",
+  "license": "ISC",
+  "devDependencies": {
+    "serverless-plugin-optimize": "^3.0.4-rc.1"
+  },
+  "dependencies": {
+    "mysql2": "^1.5.1"
+  }
+}
